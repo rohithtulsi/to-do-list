@@ -20,6 +20,6 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 
 class TaskUpdate(LoginRequiredMixin,UpdateView):
     model = Task
-    fields = ['title','description','complete']
+    fields = ['title','description','complete','tags']
     
     success_url = reverse_lazy('tasks')

@@ -20,7 +20,8 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 
 class TaskCreate(LoginRequiredMixin,CreateView):
     model = Task
-    fields = ['title','description','complete']
+    
+    fields = ['title','description','complete','tags']
     success_url = reverse_lazy('tasks')
     
     def form_valid(self, form):
