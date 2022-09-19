@@ -66,9 +66,11 @@
             <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %}
         </div>
         <div class="task-controls">
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
             <span class="handle">&nbsp;{{task.tags}}</span>
+            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
+            
         </div>
+        
         
     </div>
 
