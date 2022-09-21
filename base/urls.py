@@ -22,6 +22,7 @@ urlpatterns = [
     path('task-delete/<int:pk>/', TaskDelete.as_view(), name='task-delete'),
     path('list-create', ListCreate.as_view(), name='list-create'),
     path('list-update/<int:pk>/', ListUpdate.as_view(), name='list-update'),
-     path('list-delete/<int:pk>/', ListDelete.as_view(), name='list-delete'),
+    path('list-delete/<int:pk>/', ListDelete.as_view(), name='list-delete'),
     path('lists/', ListList.as_view(), name='lists'),
+    path('lists/list/<int:pk>', TaskList.as_view(), name='tasks'),
 ]

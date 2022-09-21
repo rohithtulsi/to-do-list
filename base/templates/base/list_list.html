@@ -1,7 +1,9 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
+
 <div class="header-bar">
+    
     <div>
         <h1> Hello {{request.user|title}}</h1>
         <h3 style="margin:0">Select Your List</h3>
@@ -27,7 +29,7 @@
             
             <div class="task-incomplete-icon"></div>
             <a href="{% url 'list-update' list.id %}">{{list}}</a> 
-            <a href="">View</a>
+            <a href="{% url 'tasks'  %}">View</a>
             
         </div>
         <div class="task-controls">
