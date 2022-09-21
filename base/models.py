@@ -12,6 +12,11 @@ TAGS_CHOICES = (
     ('red','RED'),
     ('black','BLACK'),
 )
+LISTS_CHOICES = (
+    ('1','1'),
+    ('2', '2'),
+    ('3','3'),
+)
 
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
@@ -27,3 +32,11 @@ class Task(models.Model):
 
     class Meta:
         ordering=['complete']
+
+
+class List(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
+    title = models.CharField(max_length=200)
+    listno = models.CharField(max_length=1, choices=LISTS_CHOICES, default='1')
+    description = models.TextField(null=True,blank=True)
+    created = models.DateTimeField(auto_now_add=True) 

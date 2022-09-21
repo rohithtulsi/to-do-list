@@ -1,0 +1,48 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <div>
+        <h1> Hello {{request.user|title}}</h1>
+        <p>Select Your List</p>
+    </div>
+    
+    {% if request.user.is_authenticated %}
+    
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
+</div>
+
+<div id="tasklist" class="task-items-wrapper">
+    <a>{{list.listno}}</a>
+    {% for list in lists %}
+    <div class="task-wrapper" data-position="{{list.pk}}">
+        <div class="task-title">
+            {% if list.complete %}
+            <div class="task-complete-icon"></div>
+            <!-- <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>  -->
+            <a>{{list.listno}}</a>
+            {% else %}
+            <div class="task-incomplete-icon"></div>
+            <!-- <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %} -->
+        </div>
+        <div class="task-controls">
+            <!-- <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a> -->
+            
+        </div>
+        
+        
+    </div>
+
+    {% empty %}
+    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+        <h3>No new lists are created.</h3>
+        <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'list-create' %}">New List</a> ! </h3>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content%}
