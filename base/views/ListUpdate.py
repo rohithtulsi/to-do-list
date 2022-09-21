@@ -18,8 +18,8 @@ from django.contrib.auth import login
 from base.models import List
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
-class TaskDelete(LoginRequiredMixin,DeleteView):
+class ListUpdate(LoginRequiredMixin,UpdateView):
     model = List
-    permission_required ='delete_task'
-    context_object_name ='list'
+    fields = ['title','description','listno']
+    
     success_url = reverse_lazy('lists')

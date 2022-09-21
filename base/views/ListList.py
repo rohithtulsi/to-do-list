@@ -27,4 +27,10 @@ class ListList(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs)
         context['lists'] = context['lists'].filter(user=self.request.user)
 
+        
+        search_input= self.request.GET.get('search-area') or ''
+        if search_input:
+            context['lists'] = context['lists'].filter(title__startswith=search_input)
+        context['search_input']=search_input
+
         return context

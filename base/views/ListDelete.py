@@ -18,12 +18,7 @@ from django.contrib.auth import login
 from base.models import List
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
-class ListCreate(LoginRequiredMixin,CreateView):
+class ListDelete(LoginRequiredMixin,DeleteView):
     model = List
-    
-    fields = ['title','description','listno']
+    context_object_name ='list'
     success_url = reverse_lazy('lists')
-    
-    def form_valid(self, form):
-        form.instance.user= self.request.user
-        return super(ListCreate,self).form_valid(form)

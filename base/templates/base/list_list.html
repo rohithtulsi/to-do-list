@@ -4,7 +4,7 @@
 <div class="header-bar">
     <div>
         <h1> Hello {{request.user|title}}</h1>
-        <p>Select Your List</p>
+        <h3 style="margin:0">Select Your List</h3>
     </div>
     
     {% if request.user.is_authenticated %}
@@ -15,22 +15,24 @@
     {% endif %}
 
 </div>
+<a id="add-link" href="{% url 'list-create' %}">&#x2b;</a>
+
+
+
 
 <div id="tasklist" class="task-items-wrapper">
-    <a>{{list.listno}}</a>
     {% for list in lists %}
     <div class="task-wrapper" data-position="{{list.pk}}">
         <div class="task-title">
-            {% if list.complete %}
-            <div class="task-complete-icon"></div>
-            <!-- <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>  -->
-            <a>{{list.listno}}</a>
-            {% else %}
+            
             <div class="task-incomplete-icon"></div>
-            <!-- <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %} -->
+            <a href="{% url 'list-update' list.id %}">{{list}}</a> 
+            <a href="">View</a>
+            
         </div>
         <div class="task-controls">
-            <!-- <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a> -->
+
+            <a class="delete-link" href="{% url 'list-delete' list.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
             
         </div>
         
@@ -43,6 +45,8 @@
         <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'list-create' %}">New List</a> ! </h3>
     </div>
     {% endfor %}
+    
 </div>
 
 {% endblock content%}
+
