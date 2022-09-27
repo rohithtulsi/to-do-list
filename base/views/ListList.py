@@ -1,7 +1,6 @@
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from base.models import List
-from base.models import AbstractModel
 
 
 class ListList(LoginRequiredMixin, ListView):

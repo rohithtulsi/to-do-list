@@ -24,17 +24,15 @@ class AbstractModel(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_requests_updated')
     deleted_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_requests_deleted')
 
-        
     class Meta:
         abstract = True
 
+
 class Task(AbstractModel):
-    
     title = models.CharField(max_length=200)
     description = models.TextField(default='', blank=True)
     complete = models.BooleanField(default=False)
     tags = models.CharField(max_length=6, choices=TAGS_CHOICES, default='GREEN')
-
 
     def __str__(self):
         return self.title
@@ -44,11 +42,8 @@ class Task(AbstractModel):
 
 
 class List(AbstractModel):
-    
     title = models.CharField(max_length=200)
     description = models.TextField(default='', blank=True)
-    
 
     def __str__(self):
         return self.title
-
