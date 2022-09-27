@@ -16,16 +16,25 @@ LISTS_CHOICES = (
 )
 
 
-class Task(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+class AbstractModel(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    deleted_on = models.DateTimeField(null=True, blank=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_requests_created')
+    updated_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_requests_updated')
+    deleted_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='%(class)s_requests_deleted')
+
+        
+    class Meta:
+        abstract = True
+
+class Task(AbstractModel):
+    
     title = models.CharField(max_length=200)
     description = models.TextField(default='', blank=True)
     complete = models.BooleanField(default=False)
-    createdon = models.DateTimeField(auto_now_add=True)
     tags = models.CharField(max_length=6, choices=TAGS_CHOICES, default='GREEN')
-    createdby = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    deletedon = models.DateTimeField(auto_now_add=True)
-    updatedon = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.title
@@ -34,14 +43,12 @@ class Task(models.Model):
         ordering = ['complete']
 
 
-class List(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+class List(AbstractModel):
+    
     title = models.CharField(max_length=200)
     description = models.TextField(default='', blank=True)
-    createdon = models.DateTimeField(auto_now_add=True)
-    createdby = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    deletedon = models.DateTimeField(auto_now_add=True)
-    updatedon = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return self.title
+

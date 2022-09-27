@@ -1,6 +1,7 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
+
 <div class="header-bar">
     
     <div>
@@ -16,7 +17,9 @@
     {% endif %}
 
 </div>
-<a id="add-link" href="{% url 'list-create' %}">&#x2b;</a>
+<a id="add-link" href="{% url 'list/create' %}">&#x2b;</a>
+
+
 
 
 <div id="tasklist" class="task-items-wrapper">
@@ -26,10 +29,14 @@
             
             <div class="task-incomplete-icon"></div>
             <a href="{% url 'list-update' list.id %}">{{list}}</a> 
-            <a>View</a>
+            <a href="{% url 'lists/list' list.id %}">View</a>
             
         </div>
+        <div class="task-controls">
 
+            <a class="delete-link" href="{% url 'list-delete' list.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
+            
+        </div>
         
         
     </div>

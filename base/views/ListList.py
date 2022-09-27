@@ -1,6 +1,7 @@
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from base.models import List
+from base.models import AbstractModel
 
 
 class ListList(LoginRequiredMixin, ListView):
@@ -9,7 +10,7 @@ class ListList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['lists'] = context['lists'].filter(user=self.request.user)
+        context['lists'] = context['lists'].filter(created_by=self.request.user)
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['lists'] = context['lists'].filter(title__startswith=search_input)

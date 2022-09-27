@@ -6,5 +6,5 @@ from base.models import List
 
 class ListUpdate(LoginRequiredMixin, UpdateView):
     model = List
-    fields = ['title', 'description', 'listno']
+    fields = ['title', 'description']
     success_url = reverse_lazy('lists')
