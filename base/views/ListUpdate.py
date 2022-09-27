@@ -8,3 +8,7 @@ class ListUpdate(LoginRequiredMixin, UpdateView):
     model = List
     fields = ['title', 'description']
     success_url = reverse_lazy('lists')
+
+    def form_valid(self, form):
+        form.instance.updated_by = self.request.user
+        return super(ListUpdate, self).form_valid(form)
