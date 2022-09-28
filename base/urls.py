@@ -8,15 +8,9 @@ from base.views.ListCreate import ListCreate
 from base.views.ListUpdate import ListUpdate
 from base.views.ListDelete import ListDelete
 from base.views.ListList import ListList
-from base.views.CustomLoginView import CustomLoginView
-from base.views.RegisterPage import RegisterPage
-from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
-    path('login/', CustomLoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    path('register/', RegisterPage.as_view(), name='register'),
     path('<int:pk>/tasks/', TaskList.as_view(), name='tasks'),
     # path('tasks/<int:pk>/', TaskDetail.as_view(), name='task'),
     path('tasks/create/', TaskCreate.as_view(), name='task-create'),

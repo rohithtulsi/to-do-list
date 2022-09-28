@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView
 
 
 class CustomLoginView(LoginView):
-    template_name = 'base/login.html'
+    template_name = 'users/login.html'
     fields = '__all__'
     redirect_authenticated_user = True
 
@@ -22,7 +22,7 @@ from django.shortcuts import redirect
 
 
 class RegisterPage(FormView):
-    template_name = 'base/register.html'
+    template_name = 'users/register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
     success_url = reverse_lazy('lists')
