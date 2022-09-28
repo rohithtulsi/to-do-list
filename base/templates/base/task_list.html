@@ -9,7 +9,7 @@
 <div class="header-bar">
     <div>
         <h1> Hello {{request.user|title}}</h1>
-        <h3 style="margin:0">You have <i>{{count}}</i> incomplete tasks</h3>
+        <h3 style="margin:0">You have <i>{{count}} </i> incomplete tasks</h3>
     </div>
     
     {% if request.user.is_authenticated %}
@@ -65,7 +65,7 @@
         <div class="task-title">
             {% if task.complete %}
             <div class="task-complete-icon"></div>
-            <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i> 
+            <i><s><a href="{% url 'task-update' task.id %}">{{task}} </a></s></i> 
             {% else %}
             <div class="task-incomplete-icon"></div>
             <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %}

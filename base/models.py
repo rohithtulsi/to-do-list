@@ -28,18 +28,6 @@ class AbstractModel(models.Model):
         abstract = True
 
 
-class Task(AbstractModel):
-    title = models.CharField(max_length=200)
-    description = models.TextField(default='', blank=True)
-    complete = models.BooleanField(default=False)
-    tags = models.CharField(max_length=6, choices=TAGS_CHOICES, default='GREEN')
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering = ['complete']
-
 
 class List(AbstractModel):
     title = models.CharField(max_length=200)
@@ -47,3 +35,18 @@ class List(AbstractModel):
 
     def __str__(self):
         return self.title
+
+
+class Task(AbstractModel):
+    title = models.CharField(max_length=200)
+    description = models.TextField(default='', blank=True)
+    complete = models.BooleanField(default=False)
+    tags = models.CharField(max_length=6, choices=TAGS_CHOICES, default='GREEN')
+    listno = models.ForeignKey(List, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['complete']
+
