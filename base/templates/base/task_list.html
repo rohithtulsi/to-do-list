@@ -8,8 +8,9 @@
 
 <div class="header-bar">
     <div>
-        <h1> Hello {{request.user|title}}</h1>
+        <h1> Hello {{request.user|title}} </h1>
         <h3 style="margin:0">You have <i>{{count}} </i> incomplete tasks</h3>
+
     </div>
     
     {% if request.user.is_authenticated %}
@@ -61,29 +62,31 @@
 
 <div id="tasklist" class="task-items-wrapper">
     {% for task in tasks %}
-    <div class="task-wrapper" data-position="{{task.pk}}">
-        <div class="task-title">
-            {% if task.complete %}
-            <div class="task-complete-icon"></div>
-            <i><s><a href="{% url 'task-update' task.id %}">{{task}} </a></s></i> 
-            {% else %}
-            <div class="task-incomplete-icon"></div>
-            <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %}
-        </div>
-        <div class="task-controls">
-            <span class="handle">&nbsp;{{task.tags}}</span>
-            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
+        {% if task.id  %}
+        <div class="task-wrapper" data-position="{{task.pk}}">
+            <div class="task-title">
+                {% if task.complete %}
+                <div class="task-complete-icon"></div>
+                <i><s><a href="{% url 'task-update' task.id %}">{{task}} </a></s></i> 
+                {% else %}
+                <div class="task-incomplete-icon"></div>
+                <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %}
+            </div>
+            <div class="task-controls">
+                <span class="handle">&nbsp;{{task.tags}}</span>
+                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
+                
+            </div>
+            
             
         </div>
+        {% endif %}
+        {% empty %}
+        <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
+            <h3>No new tasks are created.</h3>
+            <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'task-create' %}">New task</a> ! </h3>
+        </div>
         
-        
-    </div>
-
-    {% empty %}
-    <div style="text-align: center; padding-bottom: 10px; line-height: 1em;">
-        <h3>No new tasks are created.</h3>
-        <h3>Create a <a style="text-decoration: none; color: #e53935;" href="{% url 'task-create' %}">New task</a> ! </h3>
-    </div>
     {% endfor %}
 </div>
 

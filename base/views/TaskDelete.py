@@ -8,4 +8,4 @@ class TaskDelete(PermissionRequiredMixin, DeleteView):
     model = Task
     permission_required = 'delete_task'
     context_object_name = 'task'
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('lists')

@@ -6,8 +6,8 @@ from base.models import Task, List
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'complete', 'tags']
-    success_url = reverse_lazy('tasks')
+    fields = ['title', 'description', 'complete', 'tags', 'listno']
+    success_url = reverse_lazy('lists')
     
     def form_valid(self, form):
         form.instance.created_by = self.request.user
