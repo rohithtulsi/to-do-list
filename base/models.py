@@ -28,7 +28,6 @@ class AbstractModel(models.Model):
         abstract = True
 
 
-
 class List(AbstractModel):
     title = models.CharField(max_length=200)
     description = models.TextField(default='', blank=True)
@@ -49,4 +48,3 @@ class Task(AbstractModel):
 
     class Meta:
         ordering = ['complete']
-
