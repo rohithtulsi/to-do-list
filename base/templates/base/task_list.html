@@ -53,7 +53,7 @@
 
 
     {% if tasks|length > 0 %}
-    <a id="add-link" href="{% url 'task-create' list.id %}"> {{list.id}}&#x2b;</a>
+    <a id="add-link" href="{% url 'task-create' list.id %}"> &#x2b;</a>
     {% endif %}
 </div>
 
@@ -67,14 +67,14 @@
             <div class="task-title">
                 {% if task.complete %}
                 <div class="task-complete-icon"></div>
-                <i><s><a href="{% url 'task-update' task.id %}">{{task}} </a></s></i> 
+                <i><s><a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}} </a></s></i> 
                 {% else %}
                 <div class="task-incomplete-icon"></div>
-                <a href="{% url 'task-update' task.id %}">{{task}}</a> {% endif %}
+                <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}</a> {% endif %}
             </div>
             <div class="task-controls">
                 <span class="handle">&nbsp;{{task.tags}}</span>
-                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
+                <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
                 
             </div>
             

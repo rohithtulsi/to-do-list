@@ -13,8 +13,8 @@ from base.views.ListList import ListList
 urlpatterns = [
     path('<int:listid>/tasks/', TaskList.as_view(), name='tasks'),
     path('<int:listid>/tasks/create/', TaskCreate.as_view(), name='task-create'),
-    path('tasks/update/<int:pk>/', TaskUpdate.as_view(), name='task-update'),
-    path('tasks/delete/<int:pk>/', TaskDelete.as_view(), name='task-delete'),
+    path('<int:listid>/tasks/update/<int:pk>/', TaskUpdate.as_view(), name='task-update'),
+    path('<int:listid>/tasks/delete/<int:pk>/', TaskDelete.as_view(), name='task-delete'),
     path('create/', ListCreate.as_view(), name='list-create'),
     path('update/<int:pk>/', ListUpdate.as_view(), name='list-update'),
     path('delete/<int:pk>/', ListDelete.as_view(), name='list-delete'),
