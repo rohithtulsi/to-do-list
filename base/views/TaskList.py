@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from base.models import Task
 from base.models import List
 
+
 class TaskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'

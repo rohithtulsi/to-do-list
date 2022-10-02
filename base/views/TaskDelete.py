@@ -1,5 +1,5 @@
 from django.views.generic.edit import DeleteView
-from django.urls import reverse_lazy,reverse
+from django.urls import reverse_lazy, reverse
 from base.models import Task
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
