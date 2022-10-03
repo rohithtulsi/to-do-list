@@ -22,19 +22,20 @@
 <div id="tasklist" class="task-items-wrapper">
     <div class="task-wrapper" data-position="{{task.pk}}">
         <div class="task-title">
-            <a> List Title</a>
+            <strong>&nbsp; List Title:</strong>
+            <strong>&nbsp; List Description</strong>
         </div>
         <div class="task-controls">
-            <a> Edit&nbsp; Delete&nbsp;&nbsp;</a>
+            <strong> Edit&nbsp; Delete&nbsp;&nbsp;</strong>
         </div>
     </div>
     {% for list in lists %}
     <div class="task-wrapper" data-position="{{list.pk}}">
         <div class="task-title">
             
-            <div class="task-incomplete-icon"></div>
-            <a href="{% url 'tasks' list.id %}">{{list}}</a> 
-            
+            <!-- <div class="task-incomplete-icon"></div> -->
+            <a href="{% url 'tasks' list.id %}">{{list}}:</a> 
+            <a href="{% url 'tasks' list.id %}">{{list.description}}</a>             
             
         </div>
 
