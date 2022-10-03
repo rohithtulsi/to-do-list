@@ -19,8 +19,8 @@ class TaskList(LoginRequiredMixin, ListView):
             context['tasks'] = context['tasks'].filter(title__startswith=search_input)
         context['search_input'] = search_input
 
-        search_input_tags = self.request.GET.get('search-area-tags') or ''
-        if search_input_tags:
-            context['tasks'] = context['tasks'].filter(tags__startswith=search_input_tags)
-        context['search_input_tags'] = search_input_tags
+        search_input_Priority = self.request.GET.get('search-area-Priority') or ''
+        if search_input_Priority:
+            context['tasks'] = context['tasks'].filter(Priority__startswith=search_input_Priority)
+        context['search_input_Priority'] = search_input_Priority
         return context

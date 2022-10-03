@@ -25,13 +25,13 @@
 <div id="search-add-wrapper">
     <form method="GET" style="display: flex;">
         <input type='text' name='search-area' placeholder="Search your task" value="{{search_input}}">
-        <select id="tags" name="search-area-tags" placeholder="Tags" value="{{search_input_tags}}">
+        <select id="Priority" name="search-area-Priority" placeholder="Priority" value="{{search_input_Priority}}">
             <option value="">All</option>
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="orange">orange</option>
-            <option value="red">red</option>
-            <option value="black">black</option>
+            <option value="Very High">Very High</option>
+            <option value="High">High</option>
+            <option value="Mid">Mid</option>
+            <option value="Low">Low</option>
+            <option value="Very Low">Very Low</option>
             
           </select>
         <input class="button" type="submit" value='Search'>
@@ -73,7 +73,7 @@
                 <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}</a> {% endif %}
             </div>
             <div class="task-controls">
-                <span class="handle">&nbsp;{{task.tags}}</span>
+                <span class="handle">&nbsp;{{task.Priority}}</span>
                 <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
                 
             </div>

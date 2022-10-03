@@ -7,7 +7,7 @@ from base.models import List
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'complete', 'tags']
+    fields = ['title', 'description', 'complete', 'Priority']
     # success_url = reverse_lazy('lists')
 
     def form_valid(self, form):
