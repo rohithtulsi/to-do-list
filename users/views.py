@@ -6,6 +6,7 @@ from django.contrib.auth import login
 from django.shortcuts import redirect
 
 
+
 class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     fields = '__all__'
@@ -20,7 +21,7 @@ class RegisterPage(FormView):
     form_class = UserCreationForm
     redirect_authenticated_user = True
     success_url = reverse_lazy('lists')
-
+    
     def form_valid(self, form):
         user = form.save()
         if user is not None:
