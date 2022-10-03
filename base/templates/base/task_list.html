@@ -36,6 +36,7 @@
           </select>
         <input class="button" type="submit" value='Search'>
     </form>
+    
 
     <!-- <form method="GET" style="display: flex;">
         <input type='text' name='search-area-tags' placeholder="Tags" value="{{search_input_tags}}">
@@ -61,6 +62,15 @@
 
 
 <div id="tasklist" class="task-items-wrapper">
+    <div class="task-wrapper" data-position="{{task.pk}}">
+        <div class="task-title">
+            <a> Task Title</a>
+        </div>
+        <div class="task-controls">
+            <a> Priority&nbsp; Delete&nbsp;&nbsp;</a>
+        </div>
+    </div>
+    
     {% for task in tasks %}
         {% if task.id  %}
         <div class="task-wrapper" data-position="{{task.pk}}">
