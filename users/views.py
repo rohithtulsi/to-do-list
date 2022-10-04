@@ -10,17 +10,18 @@ from users.forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
 
+
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)
 		if form.is_valid():
 			user = form.save()
 			login(request, user)
-			messages.success(request, "Registration successful." )
+			messages.success(request, "Registration successful.")
 			return redirect('lists')
 		messages.error(request, "Unsuccessful registration. User already exists.")
 	form = NewUserForm()
-	return render (request=request, template_name="users/register.html", context={"register_form":form})
+	return render(request=request, template_name="users/register.html", context={"register_form": form})
 
 
 class CustomLoginView(LoginView):
