@@ -21,11 +21,21 @@
     {% endif %}
 
 </div>
+<div id="search-add-wrapper">
+    <form method="GET" style="display: flex;">
+    <button class="button" name="search-area-Priority" value=""> Show all</button>
+    <button class="button" name="search-area-Priority" value="Very High"> Very High</button>
+    <button class="button" name="search-area-Priority" value="High"> High</button>
+    <button class="button" name="search-area-Priority" value="Mid"> Mid</button>
+    <button class="button" name="search-area-Priority" value="Low"> Low</button>
+    <button class="button" name="search-area-Priority" value="Very Low"> Very Low</button>
+</form>
+</div>
 
 <div id="search-add-wrapper">
     <form method="GET" style="display: flex;">
         <input type='text' name='search-area' placeholder="Search your task" value="{{search_input}}">
-        <select id="Priority" name="search-area-Priority" placeholder="Priority" value="{{search_input_Priority}}" >
+        <!-- <select id="Priority" name="search-area-Priority" placeholder="Priority" value="{{search_input_Priority}}" >
             <option value="">All</option>
             <option value="Very High">Very High</option>
             <option value="High">High</option>
@@ -33,7 +43,7 @@
             <option value="Low">Low</option>
             <option value="Very Low">Very Low</option>
             
-          </select>
+        </select> -->
         <input class="button" type="submit" value='Search'>
     </form>
     
