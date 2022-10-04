@@ -18,7 +18,7 @@ def register_request(request):
 			login(request, user)
 			messages.success(request, "Registration successful." )
 			return redirect('lists')
-		messages.error(request, "Unsuccessful registration. Invalid information.")
+		messages.error(request, "Unsuccessful registration. User already exists.")
 	form = NewUserForm()
 	return render (request=request, template_name="users/register.html", context={"register_form":form})
 
