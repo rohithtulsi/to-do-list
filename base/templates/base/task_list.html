@@ -21,20 +21,14 @@
     {% endif %}
 
 </div>
-<div id="search-add-wrapper">
-    
-    <form method="GET" style="display: flex;">
-    <button class="button" name="search-area-Priority" value="" style='margin-right:16px'> Show all</button>
-    <button class="button" name="search-area-Priority" value="Very High" style='margin-right:16px'> Very High</button>
-    <button class="button" name="search-area-Priority" value="High" style='margin-right:16px'> High</button>
-    <button class="button" name="search-area-Priority" value="Mid" style='margin-right:16px'> Mid</button>
-    <button class="button" name="search-area-Priority" value="Low" style='margin-right:16px'> Low</button>
-    <button class="button" name="search-area-Priority" value="Very Low" style='margin-right:16px'> Very Low</button>
-</form>
-</div>
+
 
 <div id="search-add-wrapper">
     <form method="GET" style="display: flex;">
+        <button class="badge badge-light" name="search-area-Priority" value="" style='margin-right:16px'> All</button>
+        <button class="badge badge-danger" name="search-area-Priority" value="High" style='margin-right:16px'> High</button>
+        <button class="badge badge-primary" name="search-area-Priority" value="Normal" style='margin-right:16px'> Normal</button>
+        <button class="badge badge-secondary" name="search-area-Priority" value="Low" style='margin-right:16px'> Low</button>
         <input type='text' name='search-area' placeholder="Search your task" value="{{search_input}}">
         <!-- <select id="Priority" name="search-area-Priority" placeholder="Priority" value="{{search_input_Priority}}" >
             <option value="">All</option>
@@ -93,13 +87,18 @@
                 <!-- <i><a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}} </a></i>  -->
                 {% else %}
                 <!-- <div class="task-incomplete-icon"></div> -->
-                <a title="{{task.description}}" href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}:</a>
+                <a title="{{task.description}}" href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}</a>
                 <!-- <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}}</a> -->
                 {% endif %}
             </div>
             <div class="task-controls">
-                
-                <button class="button">{{task.Priority}}</button>
+                {% if task.Priority == "High"  %}
+                <button class="badge badge-danger">{{task.Priority}}</button>
+                {% elif task.Priority == "Normal"  %}
+                <button class="badge badge-primary">{{task.Priority}}</button>
+                {% elif task.Priority == "Low"  %}
+                <button class="badge badge-secondary">{{task.Priority}}</button>
+                {% endif %}
                 <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&#x22EE;&nbsp;&nbsp;&nbsp;</a>
                 <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
                 

@@ -3,11 +3,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 Priority_CHOICES = (
-    ('Very High', 'Very High'),
     ('High', 'High'),
-    ('Mid', 'Mid'),
+    ('Normal', 'Normal'),
     ('Low', 'Low'),
-    ('Very Low', 'Very Low'),
 )
 LISTS_CHOICES = (
     ('1', '1'),
@@ -40,7 +38,7 @@ class Task(AbstractModel):
     title = models.CharField(max_length=200)
     description = models.TextField(default='', blank=True)
     complete = models.BooleanField(default=False)
-    Priority = models.CharField(max_length=9, choices=Priority_CHOICES, default='Very High')
+    Priority = models.CharField(max_length=9, choices=Priority_CHOICES, default='Normal')
     listno = models.ForeignKey(List, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
