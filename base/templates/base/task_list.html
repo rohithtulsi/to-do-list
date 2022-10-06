@@ -25,11 +25,11 @@
     
     <form method="GET" style="display: flex;">
     <button class="button" name="search-area-Priority" value="" style='margin-right:16px'> Show all</button>
-    <button class="button" name="search-area-Priority1" value="Very High" style='margin-right:16px'> Very High</button>
-    <button class="button" name="search-area-Priority2" value="High" style='margin-right:16px'> High</button>
-    <button class="button" name="search-area-Priority3" value="Mid" style='margin-right:16px'> Mid</button>
-    <button class="button" name="search-area-Priority4" value="Low" style='margin-right:16px'> Low</button>
-    <button class="button" name="search-area-Priority5" value="Very Low" style='margin-right:16px'> Very Low</button>
+    <button class="button" name="search-area-Priority" value="Very High" style='margin-right:16px'> Very High</button>
+    <button class="button" name="search-area-Priority" value="High" style='margin-right:16px'> High</button>
+    <button class="button" name="search-area-Priority" value="Mid" style='margin-right:16px'> Mid</button>
+    <button class="button" name="search-area-Priority" value="Low" style='margin-right:16px'> Low</button>
+    <button class="button" name="search-area-Priority" value="Very Low" style='margin-right:16px'> Very Low</button>
 </form>
 </div>
 
@@ -73,7 +73,7 @@
 
 
 <div id="tasklist" class="task-items-wrapper">
-    <div class="task-wrapper" data-position="{{task.pk}}">
+    <!-- <div class="task-wrapper" data-position="{{task.pk}}">
         <div class="task-title">
             <strong>&nbsp; Task Title:</strong>
             <strong>&nbsp; Task Description</strong>
@@ -81,7 +81,7 @@
         <div class="task-controls">
             <strong> Priority&nbsp; Delete&nbsp;&nbsp;</strong>
         </div>
-    </div>
+    </div> -->
     
     {% for task in tasks %}
         {% if task.id  %}
@@ -89,16 +89,18 @@
             <div class="task-title">
                 {% if task.complete %}
                 <!-- <div class="task-complete-icon"></div> -->
-                <i><s><a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}:</a></s></i> 
-                <i><a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}} </a></i> 
+                <i><s><a title="{{task.description}}" href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}</a></s></i> 
+                <!-- <i><a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}} </a></i>  -->
                 {% else %}
                 <!-- <div class="task-incomplete-icon"></div> -->
-                <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}:</a>
-                <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}}</a>
+                <a title="{{task.description}}" href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}:</a>
+                <!-- <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}}</a> -->
                 {% endif %}
             </div>
             <div class="task-controls">
-                <span class="handle">&nbsp;{{task.Priority}}&nbsp;&nbsp;</span>
+                
+                <button class="button">{{task.Priority}}</button>
+                <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&#x22EE;&nbsp;&nbsp;&nbsp;</a>
                 <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
                 
             </div>

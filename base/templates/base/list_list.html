@@ -20,7 +20,7 @@
 
 
 <div id="tasklist" class="task-items-wrapper">
-    <div class="task-wrapper" data-position="{{task.pk}}">
+    <!-- <div class="task-wrapper" data-position="{{task.pk}}">
         <div class="task-title">
             <strong>&nbsp; List Title:</strong>
             <strong>&nbsp; List Description</strong>
@@ -28,19 +28,21 @@
         <div class="task-controls">
             <strong> Edit&nbsp; Delete&nbsp;&nbsp;</strong>
         </div>
-    </div>
+    </div> -->
     {% for list in lists %}
     <div class="task-wrapper" data-position="{{list.pk}}">
+        
         <div class="task-title">
             
             <!-- <div class="task-incomplete-icon"></div> -->
-            <a href="{% url 'tasks' list.id %}">{{list}}:</a> 
-            <a href="{% url 'tasks' list.id %}">{{list.description}}</a>             
+            <a href="{% url 'tasks' list.id %}" title="{{list.description}}">{{list}}</a> 
+            <!-- <a href="{% url 'tasks' list.id %}">{{list.description}}</a> -->
             
         </div>
 
         <div class="task-controls">
-            <a href="{% url 'list-update' list.id %}" style="text-decoration: none;">Edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            <a href="{% url 'list-update' list.id %}" style="text-decoration: none;">&#x22EE;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            
             <a class="delete-link" href="{% url 'list-delete' list.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
             
         </div>
