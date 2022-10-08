@@ -10,7 +10,16 @@
 <div class="card-body">
     <form method="POST">
 		{% csrf_token %}
-		{{ register_form|crispy }}                    
+		<!-- {{ register_form|crispy }} -->
+        <label >{{ register_form.username.label }}</label>
+        {{ register_form.username }}
+
+        <label title="Password must be atleast 8 characters">{{ register_form.password1.label }}  (&#8505;)</label>
+        {{ register_form.password1 }}
+
+        <label>{{ register_form.password2.label }}</label>
+        {{ register_form.password2 }}    
+        <label></label>                
 		<button class="button" type="submit">Register</button>
 	</form>
     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
