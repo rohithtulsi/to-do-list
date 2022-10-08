@@ -3,6 +3,12 @@
 
 <div class="header-bar">
     <a href="{% url 'lists' %}">&#8592; Back</a>
+    {% if request.user.is_authenticated %}
+    
+    <a href="{% url 'logout' %}">LOGOUT</a>
+    {% else %}
+    <a href="{% url 'login' %}">LOGIN</a>
+    {% endif %}
 </div>
 
 
@@ -13,13 +19,6 @@
 
     </div>
     
-    {% if request.user.is_authenticated %}
-    
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-
 </div>
 
 
@@ -39,7 +38,8 @@
             <option value="Very Low">Very Low</option>
             
         </select> -->
-        <input class="button" type="submit" value='Search'>
+        <input  class="btn btn-dark" type="submit" value='Search'>
+        
     </form>
     
 
@@ -100,7 +100,7 @@
                 <button class="badge badge-secondary">{{task.Priority}}</button>
                 {% endif %}
                 <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&#x22EE;&nbsp;&nbsp;&nbsp;</a>
-                <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}">&#215;&nbsp;&nbsp;&nbsp;</a>
+                <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}" style="text-decoration: none;">&#215;&nbsp;&nbsp;&nbsp;</a>
                 
             </div>
             
