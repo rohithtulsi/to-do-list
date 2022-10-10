@@ -17,8 +17,9 @@
 		<!-- {{ register_form|crispy }} -->
         <label >{{ register_form.username.label }}</label>
         {{ register_form.username }}
-
-        <label title="Password must be atleast 8 characters">{{ register_form.password1.label }}  (&#8505;)</label>
+        {% load static %}
+        <label title="Password must be atleast 8 characters">{{ register_form.password1.label }} <img src="{% static 'base/info.svg' %}" width="15" height="15"> </label>
+        
         {{ register_form.password1 }}
 
         <label>{{ register_form.password2.label }}</label>
