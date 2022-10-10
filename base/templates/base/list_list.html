@@ -19,7 +19,7 @@
 <a id="add-link" href="{% url 'list-create' %}" style="text-decoration: none;">&#x2b;</a>
 
 
-<div id="tasklist" class="task-items-wrapper">
+<div id="tasklist" class="task-items-wrapper" style="overflow:scroll; height:400px;">
     <!-- <div class="task-wrapper" data-position="{{task.pk}}">
         <div class="task-title">
             <strong>&nbsp; List Title:</strong>
@@ -43,7 +43,7 @@
         <div class="task-controls">
             <a href="{% url 'list-update' list.id %}" style="text-decoration: none;">
                 {% load static %}
-                <img src="{% static 'base/edit(1).svg' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <img src="{% static 'base/edit(1).svg' %}">&nbsp;&nbsp;&nbsp;
             
             </a>
             <a class="delete-link" href="{% url 'list-delete' list.id %}" style="text-decoration: none;">&#215;&nbsp;&nbsp;&nbsp;</a>
