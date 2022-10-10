@@ -13,6 +13,8 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 
     <style>
         body {
@@ -67,7 +69,15 @@
             text-decoration: none;
         }
 
-        .task-wrapper {
+        .task-wrapper:nth-child(even) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f2f2f2;
+            border-top: 1px solid #dfe4ea;
+            overflow: hidden;
+        }
+        .task-wrapper:nth-child(odd) {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -75,6 +85,7 @@
             border-top: 1px solid #dfe4ea;
             overflow: hidden;
         }
+
 
         .task-title {
             display: flex;
@@ -143,17 +154,24 @@
 
 
         #add-link {
-            color: #EB796F;
-            text-decoration: none;
-            font-size: 42px;
-            text-shadow: 1px 1px #81413b;
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:40px;
+            background-color:#cf4949;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+            box-shadow: 2px 2px 3px #999;
+            font-size: 38px;
         }
 
         #search-add-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
         }
 
         @media screen and (max-width:320px) {
@@ -200,7 +218,8 @@
 
 <body>
 
-    <div class="container">
+    <div class="container px-0">
+
         {% block content %} {% endblock content %}
     </div>
 
