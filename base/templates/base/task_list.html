@@ -14,54 +14,31 @@
 
 <div class="header-bar">
     <div>
-        <h1> Hello {{request.user|title}} </h1>
-        <h3 style="margin:0">You have <i>{{count}} </i> incomplete tasks from {{listname}}</h3>
+        <h2> Hello {{request.user|title}} </h2>
+        <h4 style="margin:0">You have <i>{{count}} </i> incomplete tasks from {{listname}}</h4>
 
     </div>
     
 </div>
 
-
-<div id="search-add-wrapper">
-    <form method="GET" style="display: flex;">
-        <button class="badge badge-light" name="search-area-Priority" value="" style='margin-right:16px'> All</button>
-        <button class="badge badge-danger" name="search-area-Priority" value="High" style='margin-right:16px'> High</button>
-        <button class="badge badge-primary" name="search-area-Priority" value="Normal" style='margin-right:16px'> Normal</button>
-        <button class="badge badge-secondary" name="search-area-Priority" value="Low" style='margin-right:16px'> Low</button>
-        <input type='text' name='search-area' placeholder="Search your task" value="{{search_input}}">
-        <!-- <select id="Priority" name="search-area-Priority" placeholder="Priority" value="{{search_input_Priority}}" >
-            <option value="">All</option>
-            <option value="Very High">Very High</option>
-            <option value="High">High</option>
-            <option value="Mid">Mid</option>
-            <option value="Low">Low</option>
-            <option value="Very Low">Very Low</option>
-            
-        </select> -->
-        <input  class="btn btn-dark" type="submit" value='Search'>
-        
-    </form>
+<nav class="navbar navbar-light bg-light justify-content-between">
     
+    <form class="form-inline">
+        <button class="badge badge-light"  name="search-area-Priority" value="" style='margin-right:10px'> All</button>
+        <button class="badge badge-danger" name="search-area-Priority" value="High" style='margin-right:10px'> High</button>
+        <button class="badge badge-primary" name="search-area-Priority" value="Normal" style='margin-right:10px'> Normal</button>
+        <button class="badge badge-secondary" name="search-area-Priority" value="Low" style='margin-right:10px'> Low</button>
+      <input class="form-control mr-sm-2" type='text' name='search-area' value="{{search_input}}" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
 
-    <!-- <form method="GET" style="display: flex;">
-        <input type='text' name='search-area-tags' placeholder="Tags" value="{{search_input_tags}}">
-        <input class="button" type="submit" value='Search'>
-        <select id="tags" name="search-area-tags" placeholder="Tags" value="{{search_input_tags}}">
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="orange">orange</option>
-            <option value="red">red</option>
-            <option value="black">black</option>
-            <option value="">All</option>
-          </select>
-          <input class="button" type="submit" value='Search'>
-    </form> -->
-
-
+<!-- <div id="search-add-wrapper">
+    
     {% if tasks|length > 0 %}
     <a id="add-link" href="{% url 'task-create' list.id %}" style="text-decoration: none;"> &#x2b;</a>
     {% endif %}
-</div>
+</div> -->
 
 
 
@@ -99,7 +76,8 @@
                 {% elif task.Priority == "Low"  %}
                 <button class="badge badge-secondary">{{task.Priority}}</button>
                 {% endif %}
-                <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&#x22EE;&nbsp;&nbsp;&nbsp;</a>
+                <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;{% load static %}
+                    <img src="{% static 'base/edit(1).svg' %}">&nbsp;&nbsp;&nbsp;</a>
                 <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}" style="text-decoration: none;">&#215;&nbsp;&nbsp;&nbsp;</a>
                 
             </div>
