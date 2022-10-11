@@ -5,11 +5,7 @@
     <h1>Register</h1>
 </div>
 
-{% if messages %}
-<div class="alert alert-danger" role="alert">
-        <ul class="messagelist">{% for message in messages %}<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message}}</li>{% endfor %}</ul>
-</div>
-{% endif %}
+
 
 <div class="card-body">
     <form method="POST">
@@ -17,6 +13,11 @@
 		<!-- {{ register_form|crispy }} -->
         <label >{{ register_form.username.label }}</label>
         {{ register_form.username }}
+        {% if messages %}
+        <div class="alert alert-danger" role="alert">
+                <ul class="messagelist">{% for message in messages %}<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message}}</li>{% endfor %}</ul>
+        </div>
+        {% endif %}
         {% load static %}
         <label title="Password must be atleast 8 characters">{{ register_form.password1.label }} <img src="{% static 'base/info.svg' %}" width="15" height="15"> </label>
         

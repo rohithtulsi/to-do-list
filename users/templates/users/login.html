@@ -5,15 +5,17 @@
 <div class="header-bar">
     <h1>Login</h1>
 </div>
-{% if form.non_field_errors %}
-<div class="alert alert-danger" role="alert">
-    <a>{{form.non_field_errors}}
-    </a>
-</div>
-{% endif %}
+
+
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+            <a>{{form.non_field_errors}}
+            </a>
+        </div>
+        {% endif %}
         {{form.as_p}}
         <input class="btn btn-outline-secondary" type="submit" value="Login">
     </form>
