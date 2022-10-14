@@ -20,15 +20,22 @@
     </div>
     
 </div>
-
+<!-- <nav class="navbar navbar-light bg-light justify-content-between">
+<form class="form-inline">
+        {{myFilter.form}}
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+</nav> -->
 <nav class="navbar navbar-light bg-light justify-content-between">
     
     <form class="form-inline">
-        <button class="badge badge-light"  name="search-area-Priority" value="" style='margin-right:10px'> All</button>
-        <button class="badge badge-danger" name="search-area-Priority" value="High" style='margin-right:10px'> High</button>
-        <button class="badge badge-primary" name="search-area-Priority" value="Normal" style='margin-right:10px'> Normal</button>
-        <button class="badge badge-secondary" name="search-area-Priority" value="Low" style='margin-right:10px'> Low</button>
-        <input class="form-control mr-sm-2" type='text' name='search-area' value="{{search_input}}" placeholder="Search" aria-label="Search">
+        
+        <button class="badge-lg badge-light "  name="search-area-Priority" value="" style='margin-right:8px'> All</button>
+        <button class="badge-lg badge-danger" name="search-area-Priority" value="High" style='margin-right:8px'> High</button>
+        <button class="badge-lg badge-primary" name="search-area-Priority" value="Normal" style='margin-right:8px'> Normal</button>
+        <button class="badge-lg badge-secondary" name="search-area-Priority" value="Low" style='margin-right:8px'> Low</button>
+        <a>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        <input class="form-control form-control-sm mr-sm-2" type='text' name='search-area' value="{{search_input}}" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     {% if tasks|length > 0 %}
@@ -63,27 +70,37 @@
             <div class="task-title">
                 {% if task.complete %}
                 <!-- <div class="task-complete-icon"></div> -->
+                <a>&#10003;</a>
+                <!-- <form method="POST" action="">
+                {% csrf_token %}
+                
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <input onchange="this.form.submit()" class="form-check-input" type="checkbox" value="{{task.complete}}" name="task-status" checked>
                 </div>
+                </form> -->
                 <i><s><a title="{{task.description}}" href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}</a></s></i> 
                 <!-- <i><a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}} </a></i>  -->
                 {% else %}
                 <!-- <div class="task-incomplete-icon"></div> -->
+                <a>&nbsp;</a>
+                <!-- <form method="POST" action="">
+                    {% csrf_token %}
+                    
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input onchange="this.form.submit()" class="form-check-input" type="checkbox"  value="{{task.complete}}" name="task-status">
                 </div>
+                </form> -->
                 <a title="{{task.description}}" href="{% url 'task-update' listid=list.id pk=task.id %}">{{task}}</a>
                 <!-- <a href="{% url 'task-update' listid=list.id pk=task.id %}">{{task.description}}</a> -->
                 {% endif %}
             </div>
             <div class="task-controls">
                 {% if task.Priority == "High"  %}
-                <button class="badge badge-danger">{{task.Priority}}</button>
+                <button class="badge-lg badge-danger">{{task.Priority}}</button>
                 {% elif task.Priority == "Normal"  %}
-                <button class="badge badge-primary">{{task.Priority}}</button>
+                <button class="badge-lg badge-primary">{{task.Priority}}</button>
                 {% elif task.Priority == "Low"  %}
-                <button class="badge badge-secondary">{{task.Priority}}</button>
+                <button class="badge-lg badge-secondary">{{task.Priority}}</button>
                 {% endif %}
                 <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;{% load static %}
                     <img src="{% static 'base/edit(1).svg' %}">&nbsp;&nbsp;&nbsp;</a>
