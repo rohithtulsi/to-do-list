@@ -25,23 +25,16 @@ class TaskList(LoginRequiredMixin, ListView):
                 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['tasks'] = context['tasks'].filter(title__startswith=search_input)
+            context['tasks'] = context['tasks'].filter(title__contains=search_input)
         context['search_input'] = search_input
 
-        search_input_Priority = self.request.GET.get('search-area-Priority') 
-        
+        search_input_Priority = self.request.GET.get('check') or self.request.GET.get('check1') or self.request.GET.get('check2') or self.request.GET.get('check3')
         if search_input_Priority:
-            context['tasks'] = context['tasks'].filter(Priority=search_input_Priority)
+            context['tasks'] = context['tasks'].filter(Priority=self.request.GET.get('check1')) | context['tasks'].filter(Priority=self.request.GET.get('check2')) | context['tasks'].filter(Priority=self.request.GET.get('check3'))
         context['search_input_Priority'] = search_input_Priority
+
         
         return context
+
     
-    def form_valid(self, form):
-        form.instance.updated_by = self.request.user
-        form.instance.complete = self.request.GET.get('task-status')
-        form.instance.save()
-        return redirect('tasks',listid=self.kwargs['listid'])
-    
-    def get_success_url(self):
-        return reverse('tasks', kwargs={'listid': self.object.listno.id})
 
