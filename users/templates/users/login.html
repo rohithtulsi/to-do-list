@@ -8,7 +8,7 @@
 
 
 <div class="card-body">
-    <form method="POST">
+    <form method="POST" novalidate>
         {% csrf_token %}
         {% if form.non_field_errors %}
         <div class="alert alert-danger" role="alert">
@@ -17,7 +17,7 @@
         </div>
         {% endif %}
         {{form.as_p}}
-        <input class="btn btn-outline-secondary" type="submit" value="Login">
+        <input class="btn btn-primary" type="submit" value="Login">
     </form>
     <p> Don't have an account? <a href="{% url 'register' %}">Register</a></p>
 

@@ -5,9 +5,9 @@
     <a href="{% url 'lists' %}">&#8592; Back</a>
     {% if request.user.is_authenticated %}
     
-    <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
     {% else %}
-    <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+    <a href="{% url 'login' %}" class="btn btn-danger">Login</a>
     {% endif %}
 </div>
 
@@ -42,8 +42,9 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         
     </form> -->
-    <form class="form-inline">
-        <input class="form-check-input" type="checkbox" value="" name="check1" id="flexCheckChecked" checked>
+    <form class="form-inline" >
+        <div class="d-flex justify-content-around">
+        <input class="form-check-input" type="checkbox" value="" name="check1" id="flexCheckChecked">
         <a>All &nbsp;</a>
         <input type="checkbox" value="High" name="check1" class="form-check-input" >
         <a>High &nbsp;</a>
@@ -51,13 +52,20 @@
         <a>Normal &nbsp;</a>
         <input type="checkbox" value="Low"  name="check3" class="form-check-input">
         <a>Low &nbsp;</a>
+        </div>
+        
+        <!-- <label class="btn btn-secondary">
+            <input type="checkbox" value="Low"  name="check3" class="form-check-input"> Check
+        </label> -->
         <!-- <button class="badge-lg badge-light "  name="search-area-Priority" value="" style='margin-right:8px'> All</button>
         <button class="badge-lg badge-danger" name="search-area-Priority" value="High" style='margin-right:8px'> High</button>
         <button class="badge-lg badge-primary" name="search-area-Priority" value="Normal" style='margin-right:8px'> Normal</button>
         <button class="badge-lg badge-secondary" name="search-area-Priority" value="Low" style='margin-right:8px'> Low</button> -->
-        <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        
+        <div class="d-flex">
         <input class="form-control form-control-sm mr-sm-2" type='text' name='search-area' value="{{search_input}}" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-success my-2 my-sm-0" type="submit">Apply</button>
+        </div>
     </form>
     {% if tasks|length > 0 %}
     <a id="add-link" href="{% url 'task-create' list.id %}" style="text-decoration: none;"> &#x2b;</a>
@@ -116,18 +124,18 @@
                 {% endif %}
             </div>
             <div class="task-controls">
-                {% if task.Priority == "High"  %}
-                <button class="badge-lg badge-danger">{{task.Priority}}</button>
-                {% elif task.Priority == "Normal"  %}
-                <button class="badge-lg badge-primary">{{task.Priority}}</button>
-                {% elif task.Priority == "Low"  %}
-                <button class="badge-lg badge-secondary">{{task.Priority}}</button>
+                {% if task.priority == "High"  %}
+                <button class="btn btn-danger btn-sm">{{task.priority}}</button>
+                {% elif task.priority == "Normal"  %}
+                <button class="btn btn-primary btn-sm">{{task.priority}}</button>
+                {% elif task.priority == "Low"  %}
+                <button class="btn btn-secondary btn-sm">{{task.priority}}</button>
                 {% endif %}
                 <a href="{% url 'task-update' listid=list.id pk=task.id %}" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;{% load static %}
                     <img src="{% static 'base/edit(1).svg' %}">&nbsp;&nbsp;&nbsp;</a>
                 <!-- <a class="delete-link" href="{% url 'task-delete' listid=list.id pk=task.id %}" style="text-decoration: none;">&#215;&nbsp;&nbsp;&nbsp;</a> -->
                 <a href="{% url 'task-delete' listid=list.id pk=task.id %}" style="text-decoration: none;">{% load static %}
-                    <img src="{% static 'base/x.svg' %}">&nbsp;&nbsp;&nbsp;</a>
+                    <img src="{% static 'base/cross.svg' %}">&nbsp;&nbsp;&nbsp;</a>
             </div>
             
             

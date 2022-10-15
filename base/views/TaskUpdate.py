@@ -6,7 +6,7 @@ from base.models import Task, List
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'complete', 'Priority', 'listno']
+    fields = ['title', 'description', 'complete', 'priority', 'listno']
     # success_url = reverse_lazy('lists')
 
     def form_valid(self, form):
