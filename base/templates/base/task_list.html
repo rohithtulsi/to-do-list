@@ -47,33 +47,35 @@
         <!-- <label class="btn btn-sm btn-dark" style='margin-right:7px'>
             <input onChange="this.form.submit()" class="form-check-input" type="checkbox" value="" name="check" hidden > All
         </label> -->
-        <label class="btn btn-sm btn-danger" style='margin-right:7px'>
-            <input type="checkbox" value="High" name="check1" class="form-check-input" {% if High_b %}checked {% endif %} > High
+        <label class="btn btn-sm btn-danger" style='margin-right:8px'>
+            <input onChange="this.form.submit()" type="checkbox" value="High" name="check1" class="form-check-input" {% if High_b  %}checked {% endif %}> High
         </label>
-        <label class="btn btn-sm btn-primary" style='margin-right:7px'>
-            <input type="checkbox" value="Normal"  name="check2" class="form-check-input" {% if Normal_b %}checked {% endif %}> Normal
+        <label class="btn btn-sm btn-primary" style='margin-right:8px'>
+            <input onChange="this.form.submit()" type="checkbox" value="Normal"  name="check2" class="form-check-input" {% if Normal_b %}checked {% endif %}> Normal
         </label>
-        <label class="btn btn-sm btn-secondary" style='margin-right:7px'>
-            <input type="checkbox" value="Low"  name="check3" class="form-check-input" {% if Low_b %}checked {% endif %}> Low
+        <label class="btn btn-sm btn-secondary" style='margin-right:8px'>
+            <input onChange="this.form.submit()" type="checkbox" value="Low"  name="check3" class="form-check-input" {% if Low_b %}checked {% endif %}> Low
         </label>
         </div>
-        <button class="btn btn-success my-2 my-sm-2" type="submit" style='margin-right:7px'>Apply</button>
+        <!-- <button class="btn btn-success my-2 my-sm-2" type="submit" style='margin-right:7px'>Apply</button> -->
         
         <!-- <button class="badge-lg badge-light "  name="search-area-Priority" value="" style='margin-right:8px'> All</button>
         <button class="badge-lg badge-danger" name="search-area-Priority" value="High" style='margin-right:8px'> High</button>
         <button class="badge-lg badge-primary" name="search-area-Priority" value="Normal" style='margin-right:8px'> Normal</button>
         <button class="badge-lg badge-secondary" name="search-area-Priority" value="Low" style='margin-right:8px'> Low</button> -->
         
-        <a>&nbsp;&nbsp;&nbsp;</a>
+        <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
 
         <div class="d-flex" >
             
-            <input class="form-control form-control-sm mr-sm-2" type='text' name='search-area' value="{{search_input}}" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-sm mr-sm-2" type='search' name='search-area' value="{{search_input}}" placeholder="Search" aria-label="Search">
             
             {% load static %}
             <button class="btn btn-sm btn-light my-2 my-sm-0" type="submit"><img src="{% static 'base/search.svg' %}"></button>
             
         </div>
+            
+          
     </form>
     {% if tasks|length > 0 %}
     <a id="add-link" href="{% url 'task-create' list.id %}" style="text-decoration: none;"> &#x2b;</a>

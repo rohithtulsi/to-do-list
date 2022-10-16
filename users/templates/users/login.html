@@ -8,7 +8,7 @@
 
 
 <div class="card-body">
-    <form method="POST" novalidate>
+    <form method="POST"  >
         {% csrf_token %}
         {% if form.non_field_errors %}
         <div class="alert alert-danger" role="alert">
@@ -16,7 +16,38 @@
             </a>
         </div>
         {% endif %}
-        {{form.as_p}}
+        <div class="input-group has-validation" style='margin-bottom:10px' >
+            <div class="input-group-prepend">
+              <span  class="input-group-text">{{form.username.label}}</span>
+            </div>
+            {{form.username}}
+            <div class="text-danger">
+                <small>Please enter username.</small>
+            </div>
+            
+                
+        </div>
+        <div class="input-group has-validation" style='margin-bottom:10px'>
+            <div class="input-group-prepend">
+              <span class="input-group-text">{{form.password.label}}</span>
+            </div>
+            {{form.password}}
+            <div class="text-danger">
+                <small>Please enter password.</small>
+            </div>
+        </div>
+        
+         <!-- {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+                {% endif %}
+            </div>
+        {% endfor %} -->
+        
+        
         <input class="btn btn-primary" type="submit" value="Login">
     </form>
     <p> Don't have an account? <a href="{% url 'register' %}">Register</a></p>

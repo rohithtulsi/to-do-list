@@ -28,12 +28,12 @@ class TaskList(LoginRequiredMixin, ListView):
             context['tasks'] = context['tasks'].filter(title__contains=search_input)
         context['search_input'] = search_input
 
+        
+
         search_input_Priority = self.request.GET.get('check') or self.request.GET.get('check1') or self.request.GET.get('check2') or self.request.GET.get('check3')
                 
         if search_input_Priority:
             context['tasks'] = context['tasks'].filter(priority=self.request.GET.get('check1')) | context['tasks'].filter(priority=self.request.GET.get('check2')) | context['tasks'].filter(priority=self.request.GET.get('check3'))
-            if self.request.GET.get('check'):
-                context.update({'High_b': False, 'Normal_b': False, 'Low_b': False, })
             if self.request.GET.get('check1'):
                 High_b = bool(self.request.GET.get('Check1'))
                 context.update({'High_b': True, })
