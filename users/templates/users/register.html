@@ -8,12 +8,16 @@
 
 
 <div class="card-body">
-    <form method="POST">
+    <div class="form-group">
+    <form method="POST" class="was-validated">
 		{% csrf_token %}
 		<!-- {{ register_form|crispy }} -->
-          
-        
-        
+        <!-- <div class="mb-3 mt-3">
+            <label for="id_username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div> -->
         <div class="input-group has-validation" style='margin-bottom:10px' >
             <div class="input-group-prepend">
               <span  class="input-group-text">{{ register_form.username.label }}</span>
@@ -21,9 +25,9 @@
             {{ register_form.username }}
                 
         </div>
-        <div class="text-danger">
+        <!-- <div class="text-danger">
             <small>Please enter username.</small>
-        </div>
+        </div> -->
         {% if messages %}
         <div class="alert alert-danger" role="alert">
                 <ul class="messagelist">{% for message in messages %}<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message}}</li>{% endfor %}</ul>
@@ -38,9 +42,9 @@
             
                 
         </div>
-        <div class="text-danger">
+        <!-- <div class="text-danger">
             <small>Please enter password.</small>
-        </div>
+        </div> -->
         <div class="input-group has-validation" style='margin-bottom:10px' >
             <div class="input-group-prepend">
               <span  class="input-group-text">{{ register_form.password2.label }}</span>
@@ -49,12 +53,13 @@
             
                 
         </div>
-        <div class="text-danger">
+        <!-- <div class="text-danger">
             <small>Please enter password again.</small>
-        </div>
+        </div> -->
              
 		<button class="btn btn-primary" type="submit">Register</button>
 	</form>
+</div>
     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 </div>
 

@@ -8,7 +8,23 @@
 
 
 <div class="card-body">
-    <form method="POST"  >
+    <!-- <form method="POST" class="was-validated">
+            {% csrf_token %}
+    <div class="mb-3 mt-3">
+        <label for="uname" class="form-label">Username:</label>
+        <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form> -->
+    <form method="POST" class="was-validated"  >
         {% csrf_token %}
         {% if form.non_field_errors %}
         <div class="alert alert-danger" role="alert">
@@ -16,7 +32,22 @@
             </a>
         </div>
         {% endif %}
-        <div class="input-group has-validation" style='margin-bottom:10px' >
+        
+        <div class="mb-3 mt-3">
+            <label for="id_username" class="form-label">Username:</label>
+            <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="id_password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="id_password" placeholder="Enter password" name="password" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+        </div>
+        
+        <!-- <div class="input-group has-validation" style='margin-bottom:10px' >
             <div class="input-group-prepend">
               <span  class="input-group-text">{{form.username.label}}</span>
             </div>
@@ -35,7 +66,7 @@
             <div class="text-danger">
                 <small>Please enter password.</small>
             </div>
-        </div>
+        </div> -->
         
          <!-- {% for field in form %}
             <div class="fieldWrapper">
@@ -45,11 +76,11 @@
                 <p class="help">{{ field.help_text|safe }}</p>
                 {% endif %}
             </div>
-        {% endfor %} -->
-        
+        {% endfor %}
+        -->
         
         <input class="btn btn-primary" type="submit" value="Login">
-    </form>
+    </form> 
     <p> Don't have an account? <a href="{% url 'register' %}">Register</a></p>
 
 </div>
