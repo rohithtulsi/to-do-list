@@ -39,7 +39,7 @@ class Task(AbstractModel):
     description = models.TextField(default='', blank=True)
     complete = models.BooleanField(default=False)
     priority = models.CharField(max_length=9, choices=Priority_CHOICES, default='Normal')
-    listno = models.ForeignKey(List, on_delete=models.CASCADE, null=True, blank=True)
+    list_no = models.ForeignKey(List, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title

@@ -12,8 +12,8 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
-        form.instance.listno = List.objects.get(id=self.kwargs['listid'])
+        form.instance.list_no = List.objects.get(id=self.kwargs['listid'])
         return super(TaskCreate, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('tasks', kwargs={'listid': self.object.listno.id})
+        return reverse('tasks', kwargs={'listid': self.object.list_no.id})

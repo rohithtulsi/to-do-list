@@ -11,4 +11,4 @@ class TaskDelete(PermissionRequiredMixin, DeleteView):
     # success_url = reverse_lazy('lists')
 
     def get_success_url(self):
-        return reverse('tasks', kwargs={'listid': self.object.listno.id})
+        return reverse('tasks', kwargs={'listid': self.object.list_no.id})

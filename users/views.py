@@ -1,3 +1,5 @@
+from distutils import errors
+from tkinter import Widget
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import FormView
@@ -9,7 +11,7 @@ from django.shortcuts import  render, redirect
 from users.forms import NewUserForm
 from django.contrib.auth import login
 from django.contrib import messages
-
+from django.core.exceptions import ValidationError
 
 def register_request(request):
 	if request.method == "POST":
@@ -21,7 +23,10 @@ def register_request(request):
 			return redirect('lists')
 		messages.error(request, "Unsuccessful registration. User already exists or check details.")
 	form = NewUserForm()
+
+    
 	return render(request=request, template_name="users/register.html", context={"register_form": form})
+
 
 
 class CustomLoginView(LoginView):
@@ -50,3 +55,10 @@ class RegisterPage(FormView):
             login(self.request, user)
         messages.error(self.request, "Unsuccessful registration. Invalid information.")
         return super(RegisterPage, self).form_valid(form)
+
+    def form_invalid(self, form):
+        for field in form:
+            if field.errors :
+                print(field , field.errors)
+                field.field.widget.attrs['class'] += ' is-invalid' 
+        return super().form_invalid(form)

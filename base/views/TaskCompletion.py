@@ -15,4 +15,4 @@ class TaskCompletion(LoginRequiredMixin, UpdateView):
         return super(TaskCompletion, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('tasks', kwargs={'listid': self.object.listno.id})
+        return reverse('tasks', kwargs={'listid': self.object.list_no.id})

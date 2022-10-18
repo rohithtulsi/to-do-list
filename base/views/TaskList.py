@@ -18,8 +18,9 @@ class TaskList(LoginRequiredMixin, ListView):
     fields = ['complete']
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = context['tasks'].filter(created_by=self.request.user, listno=self.kwargs['listid'])
+        context['tasks'] = context['tasks'].filter(created_by=self.request.user, list_no=self.kwargs['listid'])
         context['count'] = context['tasks'].filter(complete=False).count()
+        context['total'] = context['tasks'].count()
         context['list'] = List.objects.get(id=self.kwargs['listid'])
         context['listname'] = List.objects.get(id=self.kwargs['listid'])
                 
