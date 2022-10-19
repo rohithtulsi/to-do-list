@@ -9,5 +9,6 @@ from . import views
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    path('register/', views.register_request, name='register'),
+    #path('register/', views.register_request, name='register'),
+    path('register/', RegisterPage.as_view(), name='register'),
 ]

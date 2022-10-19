@@ -1,79 +1,46 @@
 {% extends 'users/main.html' %}
 {% block content %}
-{% load crispy_forms_tags %}   
 <div class="header-bar">
     <h1>Register</h1>
 </div>
 
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+    {{form.errors.as_text}}
+</div>
+{% endif %}
 
 
 <div class="card-body">
-    <div class="form-group">
     <form method="POST" class="was-validated">
-		{% csrf_token %}
-		<!-- {{ register_form|crispy }} -->
+        {% csrf_token %}
         <div class="mb-3 mt-3">
             <label for="id_username" class="form-label">Username:</label>
             <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <!-- <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div> -->
         </div>
-        <!-- <div class="input-group has-validation" style='margin-bottom:10px' >
-            <div class="input-group-prepend">
-              <span  class="input-group-text">{{ register_form.username.label }}</span>
-            </div>
-            {{ register_form.username }}
-                
-        </div> -->
-        <!-- <div class="text-danger">
-            <small>Please enter username.</small>
-        </div> -->
-        {% if messages %}
-        <div class="alert alert-danger" role="alert">
-                <ul class="messagelist">{% for message in messages %}<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message}}</li>{% endfor %}</ul>
-        </div>
-        {% endif %}
+    
         {% load static %}
-        <!-- <div class="input-group has-validation" style='margin-bottom:10px' >
-            <div class="input-group-prepend">
-              <span title="Password must be atleast 8 characters"  class="input-group-text">{{ register_form.password1.label }}<img src="{% static 'base/info.svg' %}" width="15" height="15"></span>
-            </div>
-            {{ register_form.password1 }}
-            
-                
-        </div> -->
+        
         <div class="mb-3">
             <label title="Password must be atleast 8 characters" for="id_password1" class="form-label">Password: &nbsp;<img src="{% static 'base/info.svg' %}" width="15" height="15"></label>
             <input type="password" class="form-control" id="id_password1" placeholder="Enter password" name="password1" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <!-- <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div> -->
         </div>
-        <!-- <div class="text-danger">
-            <small>Please enter password.</small>
-        </div> -->
-        <!-- <div class="input-group has-validation" style='margin-bottom:10px' >
-            <div class="input-group-prepend">
-              <span  class="input-group-text">{{ register_form.password2.label }}</span>
-            </div>
-            {{ register_form.password2 }} 
-            
-                
-        </div> -->
+        
         <div class="mb-3">
             <label for="id_password2" class="form-label">Password confirmation:</label>
             <input type="password" class="form-control" id="id_password2" placeholder="Enter password" name="password2" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <!-- <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div> -->
         </div>
-        <!-- <div class="text-danger">
-            <small>Please enter password again.</small>
-        </div> -->
+    
              
 		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-</div>
+    </form>
     <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
 </div>
 
 {% endblock content%}
-       

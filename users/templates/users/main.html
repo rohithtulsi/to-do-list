@@ -22,6 +22,8 @@
             font-family: 'Nunito', sans-serif;
             padding-top: 30px;
         }
+        h1 {text-align: center;}
+        
 
         h1,
         h2,
@@ -30,8 +32,9 @@
         h5,
         h6
             {
+            
             font-family: 'Nunito', sans-serif;
-            color: black;
+            color: white;
         }
 
         a,
@@ -61,16 +64,25 @@
         
 
         .header-bar {
-            display: flex;
+            
             justify-content: space-between;
             color: #fff;
             padding: 10px;
             border-radius: 5px 5px 0 0;
-            background: #DFF6FF;
+            background: #256D85;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            padding: 10px;
+            
+            background: #256D85;
+        }
+        
 
         .header-bar a {
-            color: rgb(0, 0, 0);
+            color: white;
             text-decoration: none;
         }
 
@@ -94,7 +106,7 @@
 
         .task-title {
             display: flex;
-            padding: 20px;
+            padding: 15px;
         }
 
         .task-title a {
@@ -167,6 +179,20 @@
         .btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
             background-color: #06283D !important;
         }
+        .btn-danger[id=logout], .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+            border-radius: 10px;
+        }
+
+
+        .badge-primary, .badge-primary:hover, .badge-primary:active, .badge-primary:visited {
+            background-color: #256D85 !important;
+        }
+        .badge-secondary, .badge-secondary:hover, .badge-secondary:active, .badge-secondary:visited {
+            background-color: #47B5FF !important;
+        }
+        .badge-info, .badge-info:hover, .badge-info:active, .badge-info:visited {
+            background-color: #06283D !important;
+        }
 
         #add-link {
             position:fixed;
@@ -174,7 +200,7 @@
             height:60px;
             bottom:40px;
             right:150px;
-            background-color:#cf4949;
+            background-color:#5800FF;
             color:#FFF;
             border-radius:50px;
             text-align:center;

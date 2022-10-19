@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %} 
 
 <div class="header-bar">
-    <h1>Login</h1>
+    <h1>Welcome to To-Do List </h1>
 </div>
 
 
@@ -26,6 +26,11 @@
     </form> -->
     <form method="POST" class="was-validated"  >
         {% csrf_token %}
+        <!-- {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {{form.errors.as_text}}
+        </div>
+        {% endif %} -->
         {% if form.non_field_errors %}
         <div class="alert alert-danger" role="alert">
             <a>{{form.non_field_errors}}
@@ -36,15 +41,15 @@
         <div class="mb-3 mt-3">
             <label for="id_username" class="form-label">Username:</label>
             <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <!-- <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div> -->
         </div>
 
         <div class="mb-3">
             <label for="id_password" class="form-label">Password:</label>
             <input type="password" class="form-control" id="id_password" placeholder="Enter password" name="password" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <!-- <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div> -->
         </div>
         
         <!-- <div class="input-group has-validation" style='margin-bottom:10px' >
@@ -81,7 +86,9 @@
         
         <input class="btn btn-primary" type="submit" value="Login">
     </form> 
-    <p> Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    <br>
+    <h6 style="color:black">Or</h6>
+    <a href="{% url 'register' %}">Register a new account?</a>
 
 </div>
 
