@@ -32,3 +32,9 @@ class RegisterPage(FormView):
         if self.request.user.is_authenticated:
             return redirect('lists')
         return super(RegisterPage, self).get(args, **kwargs)
+
+    def form_invalid(self, form):
+        for field in form:
+            if field.errors:
+                field.field.widget.attrs['class'] = 'is-valid'
+        return super().form_invalid(form)

@@ -5,9 +5,9 @@
     <a href="{% url 'lists' %}">&#8592; Back</a>
     {% if request.user.is_authenticated %}
     
-    <a id="logout" href="{% url 'logout' %}" class="btn btn-sm btn-danger">Logout</a>
+    <a id="logout" href="{% url 'logout' %}" class="btn btn-sm btn-danger thick">Logout</a>
     {% else %}
-    <a id="logout" href="{% url 'login' %}" class="btn btn-danger">Login</a>
+    <a id="logout" href="{% url 'login' %}" class="btn btn-danger thick">Login</a>
     {% endif %}
 </div>
 
@@ -50,15 +50,16 @@
         <!-- <label class="btn btn-sm btn-dark" style='margin-right:7px'>
             <input onChange="this.form.submit()" class="form-check-input" type="checkbox" value="" name="check" hidden > All
         </label> -->
-        <span class="btn btn-sm btn-info" style='margin-right:8px'>
+        <span class="btn btn-sm btn-info" style='margin-right:8px; margin-bottom:8px'>
             <input style='margin-top:5px' onChange="this.form.submit()" type="checkbox" value="High" name="check1" class="form-check-input" {% if High_b  %}checked {% endif %}> High
         </span>
-        <span class="btn btn-sm btn-primary" style='margin-right:8px'>
+        <span class="btn btn-sm btn-primary" style='margin-right:8px; margin-bottom:8px'>
             <input style='margin-top:5px' onChange="this.form.submit()" type="checkbox" value="Normal"  name="check2" class="form-check-input" {% if Normal_b %}checked {% endif %}> Normal
         </span>
-        <span class="btn btn-sm btn-secondary" style='margin-right:8px'>
+        <span class="btn btn-sm btn-secondary" style='margin-right:8px; margin-bottom:8px'>
             <input style='margin-top:5px' onChange="this.form.submit()" type="checkbox" value="Low"  name="check3" class="form-check-input" {% if Low_b %}checked {% endif %}> Low
         </span>
+        
         </div>
         <!-- <button class="btn btn-success my-2 my-sm-2" type="submit" style='margin-right:7px'>Apply</button> -->
         
@@ -76,6 +77,15 @@
             {% load static %}
             <button class="btn btn-sm btn-light my-2 my-sm-0" type="submit"><img src="{% static 'base/search.svg' %}"></button>
             
+        </div>
+        <div class="d-flex justify-content-around">
+
+            <span class="btn btn-sm btn-dark" style='margin-right:8px'>
+                <input style='margin-top:5px' onChange="this.form.submit()" type="checkbox" value="incomplete"  name="incomplete" class="form-check-input" {% if InComplete_b %}checked {% endif %} > Incompleted
+            </span>
+            <span class="btn btn-sm btn-dark" style='margin-right:8px'>
+                <input style='margin-top:5px' onChange="this.form.submit()" type="checkbox" value="complete"  name="complete" class="form-check-input" {% if Complete_b %}checked {% endif %} > Completed
+            </span>
         </div>
             
           

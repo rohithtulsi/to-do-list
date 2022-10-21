@@ -49,46 +49,26 @@ class RegisterPage(FormView):
             return redirect('lists')
         return super(RegisterPage, self).get(args, **kwargs)
 
-    def form_valid(self, form):
-        user = form.save()
-        if user is not None:
-            login(self.request, user)
-        messages.error(self.request, "Unsuccessful registration. Invalid information.")
-        return super(RegisterPage, self).form_valid(form)
+    # def form_valid(self, form):
+    #     user = form.save()
+    #     if user is not None:
+    #         login(self.request, user)
+    #     messages.error(self.request, "Unsuccessful registration. Invalid information.")
+    #     return super(RegisterPage, self).form_valid(form)
 
-    def form_invalid(self, form):
-        for field in form:
-            if field.errors :
-                print(field , field.errors)
-                field.field.widget.attrs['class'] += ' is-invalid' 
-        return super().form_invalid(form)
+    # def form_invalid(self, form):
+    #     for field in form:
+    #         if field.errors :
+    #             print(field , field.errors)
+    #             field.field.widget.attrs['class'] += ' is-invalid' 
+    #     return super().form_invalid(form)
 
-    def validate(self, password, user=None):
-        if len(password) < self.min_length:
-            raise ValidationError(
-                _("This password must contain at least %(min_length)d characters."),
-                code='password_too_short',
-                params={'min_length': self.min_length},
-            )
+    # def validate(self, password, user=None):
+    #     if len(password) < self.min_length:
+    #         raise ValidationError(
+    #             _("This password must contain at least %(min_length)d characters."),
+    #             code='password_too_short',
+    #             params={'min_length': self.min_length},
+    #         )
 
     
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext as _
-
-class MinimumLengthValidator:
-    def __init__(self, min_length=8):
-        self.min_length = min_length
-
-    def validate(self, password, user=None):
-        if len(password) < self.min_length:
-            raise ValidationError(
-                _("This password must contain at least %(min_length)d characters."),
-                code='password_too_short',
-                params={'min_length': self.min_length},
-            )
-
-    def get_help_text(self):
-        return _(
-            "Your password must contain at least %(min_length)d characters."
-            % {'min_length': self.min_length}
-        )
