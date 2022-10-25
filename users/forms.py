@@ -46,6 +46,8 @@ class NewUserForm(UserCreationForm):
 
 
 		if username:
+			if User.objects.get(username=username):
+				self.add_error('username', 'This Username is already in use.')
 			if len(username)<4:
 				self.add_error('username', 'Username is too short')
             # You can use ValidationError as well
