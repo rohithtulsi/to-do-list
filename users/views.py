@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import FormView
-from django.contrib.auth.forms import UserCreationForm
+from .forms import NewUserForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
 
@@ -18,7 +18,7 @@ class CustomLoginView(LoginView):
 
 class RegisterPage(FormView):
     template_name = 'users/register.html'
-    form_class = UserCreationForm
+    form_class = NewUserForm
     redirect_authenticated_user = True
     success_url = reverse_lazy('lists')
     
