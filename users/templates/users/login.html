@@ -8,89 +8,60 @@
 
 
 <div class="card-body">
-    <!-- <form method="POST" class="was-validated">
-            {% csrf_token %}
-    <div class="mb-3 mt-3">
-        <label for="uname" class="form-label">Username:</label>
-        <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-    </div>
-    <div class="mb-3">
-        <label for="pwd" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
-        <div class="valid-feedback">Valid.</div>
-        <div class="invalid-feedback">Please fill out this field.</div>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </form> -->
+    
     <form method="POST" class="was-validated"  >
-        {% csrf_token %}
-        <!-- {% if form.errors %}
+        {% if messages %}
         <div class="alert alert-danger" role="alert">
-            {{form.errors.as_text}}
+            {% for message in messages %}
+            
+                {{ message }}
+            
+            {% endfor %}
         </div>
-        {% endif %} -->
+        {% endif %}
+        {% csrf_token %}
         {% if form.non_field_errors %}
         <div class="alert alert-danger" role="alert">
             {{form.non_field_errors}}
             
         </div>
         {% endif %}
-        
-        <div class="mb-3 mt-3">
-            <label for="id_username" class="form-label">Username:</label>
-            <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
-            <!-- <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div> -->
+        <div class="form-row">
+            <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label for="id_username" class="small mb-1">Username</label>
+              <input type="text" class="form-control" id="id_username" placeholder="Enter username" name="username" required>
+            </div>
+            </div>
         </div>
 
-        <div class="mb-3">
-            <label for="id_password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="id_password" placeholder="Enter password" name="password" required>
-            <!-- <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div> -->
-        </div>
-        
-        <!-- <div class="input-group has-validation" style='margin-bottom:10px' >
-            <div class="input-group-prepend">
-              <span  class="input-group-text">{{form.username.label}}</span>
+        <div class="form-row">
+            <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+              <label ffor="id_password" class="small mb-1">Password</label>
+              <input type="password" class="form-control" id="id_password" placeholder="Enter password" name="password" required>
             </div>
-            {{form.username}}
-            <div class="text-danger">
-                <small>Please enter username.</small>
             </div>
+        </div>        
+        <div class="form-row">
+            <div class="col-md-10 offset-md-1">
             
-                
-        </div>
-        <div class="input-group has-validation" style='margin-bottom:10px'>
-            <div class="input-group-prepend">
-              <span class="input-group-text">{{form.password.label}}</span>
+                <input class=" btn btn-dark" type="submit" value="Login">
+           
             </div>
-            {{form.password}}
-            <div class="text-danger">
-                <small>Please enter password.</small>
-            </div>
-        </div> -->
+        </div>  
         
-         <!-- {% for field in form %}
-            <div class="fieldWrapper">
-                {{ field.errors }}
-                {{ field.label_tag }} {{ field }}
-                {% if field.help_text %}
-                <p class="help">{{ field.help_text|safe }}</p>
-                {% endif %}
-            </div>
-        {% endfor %}
-        -->
-        
-        <input class="btn btn-primary" type="submit" value="Login">
     </form> 
-    <br>
-    <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
-    <br>
-    <h6 style="color:black">Or</h6>
-    <a href="{% url 'register' %}">Register a new account?</a>
+    <div class="form-row">
+        <div class="col-md-10 offset-md-1">
+            <br>
+            <a  href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
+            <br>
+            <h6 style="color:black">Or</h6>
+            <a  href="{% url 'register' %}">Register a new account?</a>
+       
+        </div>
+    </div>  
 
 </div>
 
