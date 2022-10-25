@@ -4,7 +4,8 @@ from django.views.generic.edit import FormView
 from .forms import NewUserForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
-
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class CustomLoginView(LoginView):
@@ -38,3 +39,14 @@ class RegisterPage(FormView):
             if field.errors:
                 field.field.widget.attrs['class'] = 'is-valid'
         return super().form_invalid(form)
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'users/password_reset.html'
+    email_template_name = 'users/password_reset_email.html'
+    # subject_template_name = 'users/password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('login')
