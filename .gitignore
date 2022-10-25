@@ -1,3 +1,5 @@
+.env
+.todo_list/.env
 # Django #
 *.log
 *.pot
