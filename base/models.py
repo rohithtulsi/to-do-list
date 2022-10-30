@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+
 # Create your models here.
 def one_week_hence():
     return timezone.now() + timezone.timedelta(days=7)
@@ -45,7 +46,7 @@ class Task(AbstractModel):
     complete = models.BooleanField(default=False)
     priority = models.CharField(max_length=9, choices=Priority_CHOICES, default='Normal')
     list_no = models.ForeignKey(List, on_delete=models.CASCADE, null=True, blank=True)
-    due_date = models.DateTimeField(default=one_week_hence)
+    due_date = models.DateField(default=one_week_hence)
     
 
     def __str__(self):
