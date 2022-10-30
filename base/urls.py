@@ -8,6 +8,7 @@ from base.views.ListCreate import ListCreate
 from base.views.ListUpdate import ListUpdate
 from base.views.ListDelete import ListDelete
 from base.views.ListList import ListList
+from base.views.Calendar import CalendarView
 
 
 urlpatterns = [
@@ -20,4 +21,5 @@ urlpatterns = [
     path('delete/<int:pk>/', ListDelete.as_view(), name='list-delete'),
     path('', ListList.as_view(), name='lists'),
     # path('tasks/<int:pk>/', TaskDetail.as_view(), name='task'),
+    path('calendar', CalendarView.as_view(), name='calendar'),
 ]

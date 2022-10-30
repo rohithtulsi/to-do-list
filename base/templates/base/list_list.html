@@ -17,6 +17,9 @@
         <h4> Hello {{request.user|title}}</h4>
         <h6 style="margin:0">Please select Your List</h6>
     </div>
+    <div>
+        <a id="calendar" href="{% url 'calendar' %}" class="btn btn-sm btn-dark">Calendar</a>
+    </div>
 
 </div>
 <a id="add-link" href="{% url 'list-create' %}" style="text-decoration: none;">&#x2b;</a>
