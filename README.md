@@ -11,7 +11,7 @@ The user will be able to view all this tasks with respective due dates on the ca
 The first thing to do is to clone the repository:
 
 ```sh
-$ git clone https://github.com/gocardless/sample-django-app.git
+$ git clone https://github.com/rohithtulsi/to-do-list.git
 $ cd sample-django-app
 ```
 
@@ -35,4 +35,4 @@ Once `pip` has finished downloading the dependencies:
 (env)$ cd project
 (env)$ python manage.py runserver
 ```
-And navigate to `http://127.0.0.1:8000/users /`.
+And navigate to `http://127.0.0.1:8000/users/`.
