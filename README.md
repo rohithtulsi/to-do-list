@@ -12,7 +12,7 @@ The first thing to do is to clone the repository:
 
 ```sh
 $ git clone https://github.com/rohithtulsi/to-do-list.git
-$ cd sample-django-app
+$ cd to-do-list
 ```
 
 Create a virtual environment to install dependencies in and activate it:
