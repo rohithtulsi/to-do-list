@@ -36,3 +36,9 @@ Once `pip` has finished downloading the dependencies:
 (env)$ python manage.py runserver
 ```
 And navigate to `http://127.0.0.1:8000/users/login/`.
+
+Create new user or login using the superuser.
+
+Make new lists and create new tasks under each list.
+
+Use the tags to filter based on priority and use the search bar to search tasks.
