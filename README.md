@@ -1,5 +1,5 @@
 # To-Do-List-App
-A To Do List App was created using django, which helps in noting down all tasks required to complete in one place.
+To Do List App created using django, which helps in noting down all tasks required to complete in one place.
 
 This app has User Authentication with multiple lists where each list has a title and description.
 Under each list there are respective Tasks and each task has title, description, complete status, priority, and due date.
@@ -8,21 +8,21 @@ The user will be able to view all this tasks with respective due dates on the ca
 
 ## Setup
 
-The first thing to do is to clone the repository:
+1. The first thing to do is to clone the repository:
 
 ```sh
 $ git clone https://github.com/rohithtulsi/to-do-list.git
 $ cd todo_list
 ```
 
-Create a virtual environment to install dependencies in and activate it:
+2. Create a virtual environment to install dependencies in and activate it:
   
 ```sh
 $ virtualenv2 --no-site-packages env
 $ source env/bin/activate
 ```
 
-Then install the dependencies:
+3. Then install the dependencies:
 
 ```sh
 (env)$ pip install -r requirements.txt
@@ -30,12 +30,12 @@ Then install the dependencies:
 Note the `(env)` in front of the prompt. This indicates that this terminal
 session operates in a virtual environment set up by `virtualenv2`.
 
-Once `pip` has finished downloading the dependencies:
+4. Once `pip` has finished downloading the dependencies:
 ```sh
 (env)$ cd todo_list
 (env)$ python manage.py runserver
 ```
-And navigate to `http://127.0.0.1:8000/users/login/`.
+5. And navigate to `http://127.0.0.1:8000/users/login/`.
 
 Create new user or login using the superuser.
 
