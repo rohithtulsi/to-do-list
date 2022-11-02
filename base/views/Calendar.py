@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
@@ -7,6 +7,7 @@ from datetime import timedelta
 from base.models import *
 from base.utils import Calendar
 import calendar
+
 
 class CalendarView(generic.ListView):
     model = Task

@@ -3,11 +3,11 @@
 {% block content %}
 <div class="header-bar">
     <a href="{% url 'lists' %}">&#8592; Back</a>
-
+	<div>
+		<a class="btn btn-sm btn-info " href="{'% url 'calendar' %}?{'{ prev_month }}"> Previous Month </a>
+		<a class="btn btn-sm btn-info " href="{'% url 'calendar' %}?{'{ next_month }}"> Next Month </a>
+	</div>
 </div>
-<div class="clearfix">
-	<!-- <a class="btn btn-info left" href="{'% url 'cal:calendar' %}?{'{ prev_month }}"> Previous Month </a>
-	<a class="btn btn-info right" href="{'% url 'cal:calendar' %}?{'{ next_month }}"> Next Month </a> -->
-</div>
+<div class="pad"></div>
 {{ calendar }}
 {% endblock %}

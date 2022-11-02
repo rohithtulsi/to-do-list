@@ -21,5 +21,5 @@ urlpatterns = [
     path('delete/<int:pk>/', ListDelete.as_view(), name='list-delete'),
     path('', ListList.as_view(), name='lists'),
     # path('tasks/<int:pk>/', TaskDetail.as_view(), name='task'),
-    path('calendar', CalendarView.as_view(), name='calendar'),
+    path('calendar/', CalendarView.as_view(), name='calendar'),
 ]
