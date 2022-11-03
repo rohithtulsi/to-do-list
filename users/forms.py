@@ -43,7 +43,7 @@ class NewUserForm(UserCreationForm):
 			
 		cleaned_data = self.cleaned_data
 		username = cleaned_data.get('username')
-
+		
 
 		if username:
 			if User.objects.get(username=username):

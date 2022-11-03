@@ -144,6 +144,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_HOST = 'smtp.yahoo.fr'
 # EMAIL_USE_TLS = True
 # EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'rohith.testing@yahoo.in'
-# EMAIL_HOST_PASSWORD = 'nineleaps'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
 

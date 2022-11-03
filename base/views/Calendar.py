@@ -21,13 +21,13 @@ class CalendarView(generic.ListView):
 
         # Instantiate our calendar class with today's year and date
         cal = Calendar(d.year, d.month)
-
-        # Call the formatmonth method, which returns our calendar as a table
-        html_cal = cal.formatmonth(withyear=True)
-        context['calendar'] = mark_safe(html_cal)
         d2 = get_date(self.request.GET.get('month', None))
         context['prev_month'] = prev_month(d2)
         context['next_month'] = next_month(d2)
+        # Call the formatmonth method, which returns our calendar as a table
+        html_cal = cal.formatmonth(withyear=True)
+        context['calendar'] = mark_safe(html_cal)
+        
         return context
 
 def get_date(req_day):
