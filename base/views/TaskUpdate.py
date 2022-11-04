@@ -1,9 +1,9 @@
-import imp
 from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from base.models import Task, List
+from base.models import Task
 from base.forms import TaskUForm
+
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task

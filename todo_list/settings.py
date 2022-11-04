@@ -130,8 +130,7 @@ LOGIN_URL = 'login'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-     BASE_DIR / "static",
-     '/base/static/',
+    BASE_DIR / "static", '/base/static/',
 ]
 
 # Default primary key field type
@@ -146,4 +145,3 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = ''
 # EMAIL_HOST_PASSWORD = ''
-

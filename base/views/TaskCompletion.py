@@ -1,7 +1,7 @@
 from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from base.models import Task, List
+from base.models import Task
 
 
 class TaskCompletion(LoginRequiredMixin, UpdateView):

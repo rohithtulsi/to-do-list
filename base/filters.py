@@ -1,7 +1,5 @@
-from dataclasses import fields
 import django_filters
-
-from base.models import *
+from base.models import Task
 
 
 class OrderFilter(django_filters.FilterSet):

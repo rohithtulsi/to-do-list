@@ -1,5 +1,5 @@
 from django.urls import path
-from base.views.TaskDetail import TaskDetail
+# from base.views.TaskDetail import TaskDetail
 from base.views.TaskList import TaskList
 from base.views.TaskCreate import TaskCreate
 from base.views.TaskDelete import TaskDelete

@@ -12,16 +12,17 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ['title', 'description', 'complete', 'priority','due_date']
+        fields = ['title', 'description', 'complete', 'priority', 'due_date']
         widgets = {
             'due_date': DateInput(),
         }
+
 
 class TaskUForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = ['title', 'description', 'complete', 'priority', 'list_no','due_date']
+        fields = ['title', 'description', 'complete', 'priority', 'list_no', 'due_date']
         widgets = {
             'due_date': DateInput(),
         }
