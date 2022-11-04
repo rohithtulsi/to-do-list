@@ -1,5 +1,3 @@
-migrations/
-
 *.sqlite3
 .env
 .todo_list/.env
