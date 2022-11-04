@@ -1,4 +1,4 @@
-.todo_list/base/migrations
+*/migrations/
 
 *.sqlite3
 .env
